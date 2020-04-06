@@ -1,12 +1,15 @@
 package com.eujian.validator;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.context.event.annotation.BeforeTestMethod;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -18,15 +21,16 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.UnsupportedEncodingException;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
-class ValidatorApplicationTests {
+public class ValidatorApplicationTests {
 
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    void validPost() throws Exception {
+    public void validPost() throws Exception {
         String url = "/validPost";
         String reqBody= "{\n" +
                 "    \"id\": 1,\n" +
@@ -45,7 +49,7 @@ class ValidatorApplicationTests {
     }
 
     @Test
-    void validGet() throws Exception {
+    public void validGet() throws Exception {
         String url = "/validGet";
         String reqBody= "{\n" +
                 "    \"id\": 1,\n" +
@@ -64,7 +68,7 @@ class ValidatorApplicationTests {
     }
 
     @Test
-    void validRequestParam() throws Exception {
+    public void validRequestParam() throws Exception {
         String url = "/validRequestParam";
         MvcResult result = mvc.perform(MockMvcRequestBuilders
                 .get(url)
@@ -78,7 +82,7 @@ class ValidatorApplicationTests {
     }
 
     @Test
-    void validCustomize() throws Exception {
+    public void validCustomize() throws Exception {
         String url = "/validCustomize";
         String reqBody= "{\n" +
                 "    \"customize\": 1\n" +
